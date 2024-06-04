@@ -11,23 +11,27 @@ type Props = {
 const TypeSelectionForm = ({ register, userType, setUserType }: Props) => {
   return (
     <>
-      <h2 className=" text-gravel md:text-4xl font-bold">
-        Create an account
-      </h2>
+      <h2 className=" text-gravel md:text-4xl font-bold">Create an account</h2>
       <p className=" text-iridium md:text-sm">
-        Tell us about yourself ! what you do ? Let's tailor your <br />experience so that it suits you.
-
+        Tell us about yourself ! what you do ? Let's tailor your <br />
+        experience so that it suits you.
       </p>
-      <UserTypeCard 
-      setUserType={setUserType}
-      register={register}
-      userType={userType}
-      value="owner"
-      title="I own a business"
-      text="setting up my account for my company"
-      >
-
-      </UserTypeCard>
+      <UserTypeCard
+        setUserType={setUserType}
+        register={register}
+        userType={userType}
+        value="owner"
+        title="I own a business"
+        text="setting up my account for my company"
+      />
+      <UserTypeCard
+        setUserType={setUserType}
+        register={register}
+        userType={userType}
+        value="student"
+        title="I am a student "
+        text="Looking to explore about the tool"
+      />
     </>
   );
 };
