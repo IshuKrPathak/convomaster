@@ -1,36 +1,43 @@
-import { Button } from "@/components/ui/button";
-import { useAuthContextHook } from "@/context/use-auth-context";
 
-import { useSignUpForm } from "@/hooks/sign-up/use-sign-up";
-import Link from "next/link";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+'use client'
+import { Button } from '@/components/ui/button'
+import { useAuthContextHook } from '@/context/use-auth-context'
+import { useSignUpForm } from '@/hooks/sign-up/use-sign-up'
+import Link from 'next/link'
+import React from 'react'
+import { useFormContext } from 'react-hook-form'
 
-type Props = {};
+type Props = {}
 
-function ButtonHandler(props: Props) {
-    const { setCurrentStep, currentStep } = useAuthContextHook( )
-  const { formState, getFieldState, getValues } = useFormContext();
-  const { onGenerateOTP } = useSignUpForm();
+const ButtonHandler = (props: Props) => {
+  const { setCurrentStep, currentStep } = useAuthContextHook()
+  const { formState, getFieldState, getValues } = useFormContext()
+  const { onGenerateOTP } = useSignUpForm()
 
-  const { isDirty: isName } = getFieldState("fullname", formState);
-  const { isDirty: isEmail } = getFieldState("email", formState);
-  const { isDirty: isPassword } = getFieldState("password", formState);
+  const { isDirty: isName } = getFieldState('fullname', formState)
+  const { isDirty: isEmail } = getFieldState('email', formState)
+  const { isDirty: isPassword } = getFieldState('password', formState)
 
   if (currentStep === 3) {
     return (
-      <div className=" w-full flex flex-col gap-3 items-center">
-        <Button type="submit" className=" w-full">
+      <div className="w-full flex flex-col gap-3 items-center">
+        <Button
+          type="submit"
+          className="w-full"
+        >
           Create an account
         </Button>
         <p>
-          Already have an account?{" "}
-          <Link href="/auth/sign-in" className="font-bold">
+          Already have an account?
+          <Link
+            href="/auth/sign-in"
+            className="font-bold"
+          >
             Sign In
           </Link>
         </p>
       </div>
-    );
+    )
   }
 
   if (currentStep === 2) {
@@ -65,9 +72,8 @@ function ButtonHandler(props: Props) {
     )
   }
 
-
   return (
-    <div className=" w-full flex flex-col gap-3 items-center">
+    <div className="w-full flex flex-col gap-3 items-center">
       <Button
         type="submit"
         className="w-full"
@@ -76,11 +82,16 @@ function ButtonHandler(props: Props) {
         Continue
       </Button>
       <p>
-        Already have an account ?{" "}
-        <Link href="/auth/sign-in" className="font-bold"></Link>
+        Already have an account?{' '}
+        <Link
+          href="/auth/sign-in"
+          className="font-bold"
+        >
+          Sign In
+        </Link>
       </p>
     </div>
-  );
+  )
 }
 
-export default ButtonHandler;
+export default ButtonHandler
